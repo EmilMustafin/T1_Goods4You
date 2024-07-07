@@ -1,0 +1,41 @@
+.faqItem {
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgb(255, 255, 255);
+  width: 880px;
+}
+
+
+
+.questionWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.question {
+  margin: 0;
+  font-size: 18px;
+}
+
+.icon {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.iconOpen {
+  transform: rotate(45deg);
+}
+
+.answer {
+  height: 0;
+  font-size: 16px;
+  line-height: 162%;
+  color: #fff;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.answerOpen {
+  height: 80px;
+}

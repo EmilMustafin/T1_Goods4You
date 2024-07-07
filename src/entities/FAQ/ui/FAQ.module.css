@@ -1,0 +1,15 @@
+.faq_container {
+  background-color: #484283;
+ 
+}
+
+.faq {
+  padding: 60px 280px;
+  color: #fff;
+}
+.faq_title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 56px;
+  text-align: left;
+}

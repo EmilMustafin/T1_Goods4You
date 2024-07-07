@@ -1,0 +1,68 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 23px 130px;
+  background-color: #484283;
+  max-height: 90px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 147%;
+  color: #fff;
+}
+
+.nav {
+  display: flex;
+  padding: 12px 0;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+}
+.nav > .navItem:not(:last-child) {
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+.navItem:hover {
+  color: #C4C4C4;
+  text-decoration: underline;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+}
+.cart_text {
+  margin-right: 6px;
+}
+.cartIcon {
+  font-size: 1.5rem;
+}
+.cart_circle {
+  position: relative;
+  display: flex;
+  width: 12px;
+  height: 12px;
+  background: #f14f4f;
+  border-radius: 6px;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  top: 10px;
+  right: 10px;
+}
+
+.cartCount {
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 8px;
+  text-align: center;
+}
+.profile {
+  font-size: 1rem;
+}

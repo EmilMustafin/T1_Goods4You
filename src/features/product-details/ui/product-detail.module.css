@@ -1,0 +1,157 @@
+.productDetail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 48px 130px;
+}
+
+.productImage {
+  max-width: 50%;
+}
+
+.productImage img {
+  width: 100%;
+  height: auto;
+}
+
+.productInfo {
+  flex: 1 1 60%;
+  padding-left: 40px;
+}
+.productInfo > *:not(:first-child) {
+  margin-bottom: 24px;
+}
+.title_product {
+  color: #444b58;
+  font-size: 36px;
+  line-height: 56px;
+}
+.rating {
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  color: #f0ad4e;
+}
+
+.category {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #646464;
+}
+
+.stock {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  color: #f14f4f;
+  border-bottom: 2px solid #c4c4c4;
+  border-top: 2px solid #c4c4c4;
+  padding: 12px 0;
+}
+.description {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 167%;
+  color: #444b58;
+}
+.warranty_container > * {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #646464;
+}
+.shipping{
+  margin-top: 12px;
+}
+.buy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 6px;
+  width: 100%;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.04);
+}
+.price_container {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  border-right: 1px solid #c4c4c4;
+  padding: 0 24px 0 20px;
+}
+.price {
+  margin: 20px 0;
+  font-size: 36px;
+  line-height: 111%;
+  color: #444b58;
+}
+
+.current_price {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 40px;
+  text-align: left;
+  color: #444b58;
+}
+
+.original_price {
+  text-decoration: line-through;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #646464;
+}
+.discount_container {
+  display: flex;
+  min-width:153px;
+  font-size: 16px;
+  color: #444b58;
+  line-height: 150%;
+  margin-right: 90px;
+  padding: 19px 20px;
+}
+.text_discount {
+  margin-left: 10px;
+  text-align: left;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.percent_discount {
+  font-size: 16px;
+  line-height: 24px;
+  text-align: left;
+  color: #444B58;
+  margin-left:8px;
+ 
+}
+
+.addToCart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 62px;
+  padding: 20px 50px 20px 50px;
+  border-radius: 4px;
+  background: #f14f4f;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #ffffff;
+}
+
+.thumbnailContainer {
+  display: flex;
+  padding-top: 10px;
+  overflow-x: scroll;
+  
+}
+
+.thumbnail {
+  margin-right: 20px;
+  margin:10px;
+}
+
+

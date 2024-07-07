@@ -1,0 +1,15 @@
+html {
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+}
+
+body {
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+  height: 100%;
+  overflow: auto;
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+}
