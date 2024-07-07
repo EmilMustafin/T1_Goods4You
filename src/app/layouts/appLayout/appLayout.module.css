@@ -1,0 +1,13 @@
+.bodyContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* overflow: hidden; */
+  }

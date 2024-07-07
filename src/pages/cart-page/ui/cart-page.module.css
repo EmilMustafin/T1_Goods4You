@@ -1,0 +1,16 @@
+.cartContainer {
+  padding: 48px 130px;
+  color: #fff;
+}
+.setup_container {
+  display: flex;
+  justify-content: space-between;
+}
+.title_cart {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 56px;
+  text-align: left;
+  color: #444b58;
+  margin-bottom: 48px;
+}
