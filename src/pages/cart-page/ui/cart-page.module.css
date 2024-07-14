@@ -4,7 +4,8 @@
 }
 .setup_container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 .title_cart {
   font-size: 36px;
@@ -13,4 +14,10 @@
   text-align: left;
   color: #444b58;
   margin-bottom: 48px;
+}
+.empty_cart {
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+  color: #B2B5BB;
 }

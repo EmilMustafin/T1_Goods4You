@@ -5,10 +5,12 @@ interface Props {
   icon: Icons;
   className?: string;
   style?: React.CSSProperties;
+  width?: string;
+  height?: string;
 }
 
-export const Icon = ({ icon, className, ...rest }: Props) => {
+export const Icon = ({ icon, className,width,height, ...rest }: Props) => {
   const Icon = ICONS[icon];
 
-  return <Icon className={`${s.icon} ${className ? className : ''}`} {...rest} />;
+  return <Icon  className={`${s.icon} ${className ? className : ''}`} {...rest} />;
 };

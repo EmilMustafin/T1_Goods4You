@@ -1,11 +1,11 @@
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { cartsUserSlice } from '@/entities/products-cart';
 import { Icons } from '@/shared/assets';
+import { useAppSelector } from '@/shared/lib/redux';
 import { Icon } from '@/shared/ui/icon';
 import styles from './header.module.css';
 export const Header = () => {
- 
-
-
+  const totalQuantity = useAppSelector(cartsUserSlice.selectors.getTotalQuantity);
   return (
     <header className={styles.header}>
       <Link to='/' className={styles.logo}>
@@ -23,7 +23,7 @@ export const Header = () => {
             <div className={styles.cart_text}>Cart</div>
             <Icon icon={Icons.CART} />
             <div className={styles.cart_circle}>
-              <span className={styles.cartCount}>1</span>
+              <span className={styles.cartCount}>{totalQuantity}</span>
             </div>
           </Link>
         </div>
