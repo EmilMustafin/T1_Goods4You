@@ -1,7 +1,7 @@
-import { cartsUserSlice } from '@/entities/products-cart';
+import { cartsUserSlice, updateCartsUser } from '@/entities/user';
 import { IProductFormat } from '@/shared/api';
-import { formatPrice } from '@/shared/lib/format-number';
-import { useAppSelector } from '@/shared/lib/redux';
+import { formatPrice } from '@/shared/lib';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
 import { Button } from '@/shared/ui/button';
 import { Counter } from '@/shared/ui/counter/ui/counter';
 import { ImageSlider } from '@/shared/ui/image-slider/ui/image-slider';
@@ -12,6 +12,7 @@ export interface Props {
   productDetail: IProductFormat;
 }
 export const ProductDetail = ({ productDetail }: Props) => {
+  const dispatch = useAppDispatch();
   const carts = useAppSelector((state) =>
     cartsUserSlice.selectors.searchCartProduct(state, productDetail.id),
   );
@@ -41,7 +42,33 @@ export const ProductDetail = ({ productDetail }: Props) => {
             <div className={styles.text_discount}>Your discount:</div>
             <span className={styles.percent_discount}>{productDetail.discountPercentage}%</span>
           </div>
-          {carts ? <Counter counter={carts.quantity} /> : <Button size='l'>Add to cart</Button>}
+          {carts?.quantity ? (
+            <Counter
+              stock={productDetail.stock}
+              counter={carts.quantity}
+              onIncrement={() =>
+                dispatch(
+                  updateCartsUser({
+                    updateCarts: { id: carts.id, quantity: carts.quantity - 1 },
+                  }),
+                )
+              }
+              onDecrement={() =>
+                dispatch(
+                  updateCartsUser({
+                    updateCarts: { id: productDetail.id, quantity: carts.quantity + 1 },
+                  }),
+                )
+              }
+            />
+          ) : (
+            <Button
+              size='l'
+              onClick={() => dispatch(updateCartsUser({ updateCarts: { id: productDetail?.id } }))}
+            >
+              Add to cart
+            </Button>
+          )}
         </div>
       </div>
     </div>

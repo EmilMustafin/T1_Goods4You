@@ -1,10 +1,7 @@
-import { useState, useRef, forwardRef, MouseEvent, FormEvent, FocusEvent, useEffect } from 'react';
+import { useState, useRef, forwardRef, FormEvent, FocusEvent, useEffect } from 'react';
 import styles from './input.module.css';
 import { InputProps } from '../model/types';
 
-{
-  /* TODO Добавить иконки для разных типов инпутов */
-}
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
@@ -43,14 +40,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       }
     }, [initialValue]);
 
-    const boxClass = `${styles.inputWrapper} ${isError && !disabled ? styles.error : ''} ${
-      !isError && focus ? styles.focus : ''
-    } ${white ? styles.white : ''} ${size ? styles[size] : ''}`;
-
-    const labelClass = `${styles.label} ${isError ? styles.error : ''} ${
-      focus || valueInput || inputRef.current?.value ? styles.focus : ''
-    }`;
-
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>): void => {
       if (e.key === 'Enter' && type === 'replace') {
         e.preventDefault();
@@ -70,13 +59,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const handleFocus: (e: FocusEvent<HTMLInputElement>) => void = (e) => {
       setFocus(true);
       onFocus?.(e);
-    };
-
-    const handleFocusLabel: (e: MouseEvent<HTMLLabelElement>) => void = () => {
-      if (!disabled) {
-        setFocus(true);
-        inputRef.current?.focus();
-      }
     };
 
     const handleFocusDisable: (e: FocusEvent<HTMLInputElement>) => void = (e) => {

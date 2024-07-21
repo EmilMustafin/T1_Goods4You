@@ -13,7 +13,7 @@ export const FAQ: React.FC = () => {
   return (
     <section id='faq' className={styles.faq_container}>
       <div className={styles.faq}>
-        <h2 className={styles.faq_title}>FAQ</h2>
+        <h1 className={styles.faq_title}>FAQ</h1>
         {faqData.map((item, index) => (
           <FAQItem
             key={index}

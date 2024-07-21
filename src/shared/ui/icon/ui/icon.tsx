@@ -9,8 +9,8 @@ interface Props {
   height?: string;
 }
 
-export const Icon = ({ icon, className,width,height, ...rest }: Props) => {
+export const Icon = ({ icon, className, ...rest }: Props) => {
   const Icon = ICONS[icon];
 
-  return <Icon  className={`${s.icon} ${className ? className : ''}`} {...rest} />;
+  return <Icon className={`${s.icon} ${className ? className : ''}`} {...rest} />;
 };

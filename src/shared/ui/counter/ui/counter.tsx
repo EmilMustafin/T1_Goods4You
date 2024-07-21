@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Icons } from '@/shared/assets';
 import styles from './counter.module.css';
 import { Button } from '../../button';
@@ -8,39 +7,47 @@ export interface Props {
   counter: number;
   className?: string;
   size?: 's' | 'm' | 'l';
+  stock?: number;
+  onIncrement: () => void;
+  onDecrement: () => void;
 }
 
-export const Counter = ({ counter, className, size = 's' }: Props) => {
-  const [items, setItems] = useState(counter);
+export const Counter = ({
+  counter,
+  className,
+  stock,
+  size = 's',
+  onIncrement,
+  onDecrement,
+}: Props) => {
   return (
     <>
-      {items && (
-        <div className={`${styles.counter_container} ${className}`}>
-          <Button
-            size={size}
-            onClick={(e) => {
-              e.preventDefault();
-              setItems((prevItems) => (prevItems > 1 ? prevItems - 1 : prevItems));
-            }}
-          >
-            <Icon icon={Icons.MINUS} />
-          </Button>
-          {items && (
-            <div className={styles.counter}>
-              {items} {items > 1 ? 'items' : 'item'}
-            </div>
-          )}
-          <Button
-            size={size}
-            onClick={(e) => {
-              e.preventDefault();
-              setItems((prev) => prev + 1);
-            }}
-          >
-            <Icon icon={Icons.PLUS} style={{ width: '20px', height: '20px' }} />
-          </Button>
-        </div>
-      )}
+      <div className={`${styles.counter_container} ${className}`}>
+        <Button
+          size={size}
+          onClick={(e) => {
+            e.preventDefault();
+            onIncrement();
+          }}
+        >
+          <Icon icon={Icons.MINUS} />
+        </Button>
+        {counter && (
+          <div className={styles.counter}>
+            {counter} {counter > 1 ? 'items' : 'item'}
+          </div>
+        )}
+        <Button
+          size={size}
+          disabled={counter === stock}
+          onClick={(e) => {
+            e.preventDefault();
+            onDecrement();
+          }}
+        >
+          <Icon icon={Icons.PLUS} style={{ width: '20px', height: '20px' }} />
+        </Button>
+      </div>
     </>
   );
 };

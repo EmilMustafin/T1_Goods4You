@@ -9,12 +9,12 @@ export const Footer = () => {
           Goods4you
         </Link>
         <div className={styles.footer_nav}>
-          <a href='/#catalog' className={styles.footer_item}>
+          <Link to='/#catalog' className={styles.footer_item}>
             Catalog
-          </a>
-          <a href='/#faq' className={styles.footer_item}>
+          </Link>
+          <Link to='/#faq' relative='path' className={styles.footer_item}>
             FAQ
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

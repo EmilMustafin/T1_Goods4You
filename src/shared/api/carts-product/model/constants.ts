@@ -34,6 +34,8 @@ export const transformSearchProduct = (productSearch: IProductsSearch) => {
       title: item.title,
       price: item.price,
       thumbnail: item.thumbnail,
+      stock: item.stock,
+      discountPercentage: item.discountPercentage,
     };
   });
   return {

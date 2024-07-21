@@ -1,1 +1,1 @@
-export { RootLayout } from './ui/root-layout.tsx';
+export { RootLayout } from './ui/root-layout';

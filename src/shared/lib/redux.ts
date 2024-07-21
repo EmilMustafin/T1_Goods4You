@@ -3,6 +3,8 @@ import {
   buildCreateSlice,
   createAsyncThunk,
   createSelector,
+  ThunkAction,
+  UnknownAction,
 } from '@reduxjs/toolkit';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 /* eslint-disable boundaries/element-types */
@@ -14,7 +16,7 @@ export const useAppSelector = useSelector.withTypes<AppState>();
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
 export const useAppStore = useStore.withTypes<typeof store>();
 export const createAppSelector = createSelector.withTypes<AppState>();
-
+export type AppThunk<R = void> = ThunkAction<R, AppState, typeof extraArgument, UnknownAction>;
 export const createAppAsyncThunk = createAsyncThunk.withTypes<{
   state: AppState;
   dispatch: AppDispatch;

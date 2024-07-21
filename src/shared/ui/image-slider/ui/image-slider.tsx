@@ -18,7 +18,7 @@ export function ImageSlider({ images }: ImageSliderProps) {
           <img
             key={image}
             src={image}
-            alt={image}
+            alt='Gallery product'
             aria-hidden={imageIndex !== index}
             className={s.imgSliderImg}
             style={{ translate: `${-100 * imageIndex}%` }}

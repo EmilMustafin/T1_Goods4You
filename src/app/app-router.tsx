@@ -2,11 +2,13 @@ import { createBrowserRouter } from 'react-router-dom';
 import { CartPage } from '@/pages/cart-page';
 import { HomePage } from '@/pages/home-page';
 import { ProductPage } from '@/pages/product-page';
+import { SignInPage } from '@/pages/sign-in-page';
 import { ROUTER_PATHS } from '@/shared/constants';
 import { Error } from '@/widgets/error';
 import { RootLayout } from '@/widgets/root-layout';
+import { AuthRedirect } from './auth-redirect';
 
-export const appRouter = createBrowserRouter([
+export const Router = createBrowserRouter([
   {
     path: ROUTER_PATHS.HOME,
     element: <RootLayout />,
@@ -14,15 +16,36 @@ export const appRouter = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: (
+          <AuthRedirect>
+            <HomePage />
+          </AuthRedirect>
+        ),
       },
+
       {
         path: ROUTER_PATHS.PRODUCT,
-        element: <ProductPage />,
+        element: (
+          <AuthRedirect>
+            <ProductPage />
+          </AuthRedirect>
+        ),
       },
       {
         path: ROUTER_PATHS.CART,
-        element: <CartPage />,
+        element: (
+          <AuthRedirect>
+            <CartPage />
+          </AuthRedirect>
+        ),
+      },
+      {
+        path: ROUTER_PATHS.SIGN_IN,
+        element: (
+          <AuthRedirect>
+            <SignInPage />
+          </AuthRedirect>
+        ),
       },
     ],
   },

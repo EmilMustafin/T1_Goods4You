@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Jost';
   font-style: normal;
   font-display: swap;
   src:
@@ -9,7 +9,7 @@
   font-weight: 600;
 }
 @font-face {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Jost';
   font-style: normal;
   font-display: swap;
   src:
@@ -19,7 +19,7 @@
   font-weight: 400;
 }
 @font-face {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Jost';
   font-display: swap;
   src:
     local('Jost-Bold'),
@@ -29,7 +29,7 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Jost';
   font-display: swap;
   src:
     local('Jost-Medium'),

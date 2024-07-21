@@ -4,3 +4,5 @@
  <br/>
 Для запуска storybook:
 - npm run storybook
+Для запуска тестов:
+- npm run test

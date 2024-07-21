@@ -1,4 +1,4 @@
 export interface IUpdateCart {
     id: number;
-    quantity: number;
+    quantity?: number | null;
 }

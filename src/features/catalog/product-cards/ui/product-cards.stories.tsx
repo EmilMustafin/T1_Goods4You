@@ -2,9 +2,9 @@ import { configureStore } from '@reduxjs/toolkit';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
-import { cartsUserSlice } from '@/entities/products-cart';
+import { cartsUserSlice } from '@/entities/user';
 import { Icons, IMAGES } from '@/shared/assets';
-import { formatPrice } from '@/shared/lib/format-number';
+import { formatPrice } from '@/shared/lib';
 import { Icon } from '@/shared/ui';
 import { Button } from '@/shared/ui/button';
 import { Counter } from '@/shared/ui/counter/ui/counter';
@@ -25,6 +25,7 @@ const productExample = {
   price: 110,
   thumbnail: IMAGES.PRODUCT_CATALOG,
   discountPercentage: 10,
+  stock: 10,
 };
 
 type Story = StoryObj<typeof ProductCard>;
@@ -73,7 +74,7 @@ export const Hovered: Story = {
           </div>
           <div className={styles.actions}>
             {cart ? (
-              <Counter counter={cart.quantity} />
+              <Counter counter={cart.quantity} onIncrement={() => {}} onDecrement={() => {}} />
             ) : (
               <Button className={styles.addToCart}>
                 <Icon icon={Icons.CART} />

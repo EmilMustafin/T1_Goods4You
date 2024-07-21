@@ -19,7 +19,10 @@ interface IMeta {
   qrCode: string;
 }
 export interface IProductCard
-  extends Pick<IProductResponse, 'id' | 'title' | 'price' | 'thumbnail' | 'discountPercentage'> {}
+  extends Pick<
+    IProductResponse,
+    'id' | 'title' | 'price' | 'thumbnail' | 'stock' | 'discountPercentage'
+  > {}
 export type ISearchProductFormat = {
   products: IProductCard[];
   total: number;

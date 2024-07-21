@@ -1,6 +1,7 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit';
-import { ICartsResponse } from '@/shared/api';
+import { ICartsResponse, IGetAuthFormat } from '@/shared/api';
 import { createAppAsyncThunk } from '@/shared/lib/redux';
+import { cartsUserRepository } from './products-cart-repositiry';
 import { IUpdateCart } from './types';
 
 interface UserCartState {
@@ -25,12 +26,37 @@ export const cartsUserSlice = createSlice({
       }
       return null;
     },
-    getProducts: (state) => {
-      if (state?.cartsUser?.carts && state.cartsUser.carts.length > 0) {
-        return state.cartsUser.carts[0].products;
-      }
-      return null;
-    },
+    selectUserCartsStatus: (state) => state.status,
+    selectUpdateCartUser: createSelector(
+      [
+        (state: UserCartState) => state?.cartsUser?.carts[0].products,
+        (_: UserCartState, updateQuantity: IUpdateCart) => updateQuantity,
+      ],
+      (products, updateQuantity) => {
+        if (!products) return [];
+
+        let found = false;
+        const updatedProducts = products.map((item) => {
+          if (item.id === updateQuantity.id) {
+            found = true;
+            return {
+              id: updateQuantity.id,
+              quantity: updateQuantity.quantity === 0 ? null : updateQuantity.quantity,
+            };
+          }
+          return {
+            id: item.id,
+            quantity: item.quantity,
+          };
+        });
+
+        if (!found) {
+          updatedProducts.push({ id: updateQuantity.id, quantity: updateQuantity.quantity });
+        }
+
+        return updatedProducts;
+      },
+    ),
     searchCartProduct: createSelector(
       [
         (state: UserCartState) => state?.cartsUser?.carts[0]?.products,
@@ -71,8 +97,8 @@ export const cartsUserSlice = createSlice({
       })
       .addCase(updateCartsUser.fulfilled, (state, action) => {
         state.status = 'success';
-        if (state?.cartsUser?.carts && state.cartsUser.carts.length > 0) {
-          state.cartsUser.carts = action.payload;
+        if (state.cartsUser && state.cartsUser.carts) {
+          state.cartsUser.carts[0] = action.payload;
         }
         state.error = null;
       })
@@ -83,19 +109,34 @@ export const cartsUserSlice = createSlice({
   },
 });
 
-const updateCartsUser = createAppAsyncThunk(
+export const updateCartsUser = createAppAsyncThunk(
   'cart/updateCartsUser',
-  async ({ userId, products }: { userId: number; products: IUpdateCart }, thunkAPI) =>
-    thunkAPI.extra.cartsUserRepository.updateCartsUser({ userId: userId, products: products }),
-);
-const fetchUserCarts = createAppAsyncThunk<ICartsResponse, number>(
-  'cart/userById',
-  async (userId: number, thunkAPI) => thunkAPI.extra.cartsUserRepository.getCartsUser(userId),
+  async ({ updateCarts }: { updateCarts: IUpdateCart }, thunkAPI) => {
+    const cartsId = thunkAPI.getState().userCarts.cartsUser?.carts[0].id;
+    const updateProducts = cartsUserSlice.selectors.selectUpdateCartUser(
+      thunkAPI.getState(),
+      updateCarts,
+    );
+
+    const response = await cartsUserRepository.updateCartsUser({
+      cartsId: cartsId,
+      products: updateProducts,
+    });
+
+    return response;
+  },
 );
 
-export const userCartsStore = {
-  actions: {
-    fetchUserCarts,
-    updateCartsUser,
+export const fetchUserCarts = createAppAsyncThunk<ICartsResponse, IGetAuthFormat | null>(
+  'cart/userById',
+  async (data, thunkAPI) => {
+    const { dispatch, getState } = thunkAPI;
+    dispatch(thunkAPI.extra.userSlice.actions.setUser(data ? data : null));
+    const userData = getState().user.user;
+    if (!userData) {
+      return null;
+    }
+    const cartsResponse = await cartsUserRepository.getCartsUser(userData.id);
+    return cartsResponse;
   },
-};
+);

@@ -21,6 +21,12 @@ const meta: Meta<typeof Counter> = {
       },
       control: 'inline-radio',
     },
+    stock: {
+      description: 'Ограничение количества элементов',
+      table: {
+        type: { summary: 'number' },
+      },
+    },
   },
   args: {
     counter: 1,

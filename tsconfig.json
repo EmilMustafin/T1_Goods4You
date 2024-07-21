@@ -9,7 +9,12 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["vite-plugin-svgr/client"],
+    "types": [
+      "vite-plugin-svgr/client",
+      "jest",
+      "@testing-library/react",
+      "@testing-library/jest-dom"
+    ],
     "esModuleInterop": true,
     /* Bundler mode */
     "forceConsistentCasingInFileNames": true,
@@ -28,7 +33,7 @@
     "noFallthroughCasesInSwitch": true
   },
   "files": ["./custom.d.ts"],
-  "include": ["src", "src/**/*.ts", "src/**/*.tsx", "vite.config.ts", "custom.d.ts"],
+  "include": ["src", "src/**/*.ts", "src/**/*.tsx", "custom.d.ts", "vite-env.d.ts"],
   "references": [
     {
       "path": "./tsconfig.node.json"

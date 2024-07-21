@@ -1,4 +1,4 @@
-import { formatPrice } from '@/shared/lib/format-number';
+import { formatPrice } from '@/shared/lib';
 import styles from './cart-summary.module.css';
 
 interface Props {

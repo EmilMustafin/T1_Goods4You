@@ -8,7 +8,7 @@ body {
   overscroll-behavior-x: none;
   height: 100%;
   overflow: auto;
-  font-family: 'Jost', sans-serif;
+  font-family: 'Jost';
   font-weight: 600;
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;

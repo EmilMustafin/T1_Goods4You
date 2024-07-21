@@ -1,0 +1,26 @@
+.error {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 500px;
+}
+.error__title {
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 25%;
+  padding: 25px;
+}
+.error__text {
+  font-weight: 600;
+  font-size: 20px;
+  margin: 10px;
+}
+.error_link {
+  color: blue;
+  cursor: pointer;
+}
+.error_link:hover {
+  color: #c4c4c4;
+  text-decoration: underline;
+}
