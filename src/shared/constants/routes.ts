@@ -3,4 +3,4 @@ export const ROUTER_PATHS = {
   PRODUCT: '/product/:productId',
   CART: '/cart',
   SIGN_IN: '/login',
-} as const;
+};

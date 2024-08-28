@@ -4,8 +4,7 @@ import { auth } from '@/entities/user';
 import { ScrollHash } from '@/features/scroll-hash';
 import { getAccessToken } from '@/shared/lib/localStorage';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
-import { Spinner } from '@/shared/ui';
-import { Footer, Header } from '@/widgets';
+import { Footer, Header, Spinner } from '@/shared/ui';
 import styles from './root-layout.module.css';
 
 export const RootLayout = () => {
