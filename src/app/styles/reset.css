@@ -72,6 +72,7 @@ video,
 canvas,
 svg {
   display: block;
+  overflow: visible;
 }
 
 h1,
@@ -80,7 +81,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-size: inherit;
+  font-style: inherit;
 }
 #root,
 #__next {

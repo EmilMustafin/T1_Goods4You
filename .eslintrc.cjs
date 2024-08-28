@@ -3,11 +3,10 @@ const customRules = require('./config/eslint/custom-rules.cts');
 const path = require('path');
 
 module.exports = {
-  root: true,
   env: {
     browser: true,
     es2020: true,
-    node: true,
+    jest: true,
   },
   extends: [
     'eslint:recommended',
@@ -30,6 +29,9 @@ module.exports = {
     'storybook-static',
     '.eslintrc.cjs',
     'vite.config.ts',
+    '.storybook',
+    'test',
+    'jest.config.ts',
   ],
   parser: '@typescript-eslint/parser',
   plugins: [
@@ -86,7 +88,7 @@ module.exports = {
         capture: ['segment'],
       },
     ],
-  'boundaries/ignore': ['**/*.test.*'],
+    'boundaries/ignore': ['**/*.test.*'],
   },
   rules: {
     ...customRules,

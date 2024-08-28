@@ -7,10 +7,15 @@ interface Props {
 }
 
 export const Star = ({ stars }: Props) => {
+  const roundedStars = Math.round(stars);
   const ratingStar = Array.from({ length: 5 }, (_, index) => {
     return (
       <span key={index}>
-        {stars >= index + 1 ? <Icon icon={Icons.STAR_FILL} style={{ width: '20px', height: '20px' }} /> : <Icon icon={Icons.STAR} />}
+        {roundedStars >= index + 1 ? (
+          <Icon icon={Icons.STAR_FILL} style={{ width: '20px', height: '20px' }} />
+        ) : (
+          <Icon icon={Icons.STAR} />
+        )}
       </span>
     );
   });

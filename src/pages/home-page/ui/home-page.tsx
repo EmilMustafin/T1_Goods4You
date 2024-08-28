@@ -1,5 +1,7 @@
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { Catalog, FAQ, MainInfo } from '@/features';
+import { Catalog } from '@/features/catalog';
+import { FAQ } from '@/features/faq';
+import { MainInfo } from '@/features/main-info';
 
 export const HomePage = () => {
   return (

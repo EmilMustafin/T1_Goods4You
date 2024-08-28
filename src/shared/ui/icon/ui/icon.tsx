@@ -5,6 +5,8 @@ interface Props {
   icon: Icons;
   className?: string;
   style?: React.CSSProperties;
+  width?: string;
+  height?: string;
 }
 
 export const Icon = ({ icon, className, ...rest }: Props) => {
