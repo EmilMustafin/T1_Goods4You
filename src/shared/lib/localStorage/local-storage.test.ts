@@ -8,12 +8,12 @@ describe('localStorageUtils', () => {
   });
 
   it('Поместить токены в локальное хранилище и отправить событие хранения', () => {
-    const tokens: IToken = { token: 'dummyAccessToken' };
+    const tokens: IToken = { accessToken: 'dummyAccessToken' };
     const dispatchEventSpy = jest.spyOn(window, 'dispatchEvent');
 
     setTokensIntoStorage(tokens);
 
-    expect(localStorage.getItem('accessToken')).toBe(tokens.token);
+    expect(localStorage.getItem('accessToken')).toBe(tokens.accessToken);
     expect(dispatchEventSpy).toHaveBeenCalledWith(new Event('storage'));
   });
 
