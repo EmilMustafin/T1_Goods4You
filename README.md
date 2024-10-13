@@ -1,6 +1,7 @@
 Для авторизации используйте такие данные:
 - Login: liamg
-- Password:liamgpass
+- Password: liamgpass
+  
 Для запуска проекта проделайте шаги:
 - npm install
 - npm run dev
