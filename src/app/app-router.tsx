@@ -8,7 +8,7 @@ import { Error } from '@/widgets/error';
 import { RootLayout } from '@/widgets/root-layout';
 import { AuthRedirect } from './auth-redirect';
 
-export const Router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: ROUTER_PATHS.HOME,
     element: <RootLayout />,
@@ -50,3 +50,5 @@ export const Router = createBrowserRouter([
     ],
   },
 ]);
+
+export default router;

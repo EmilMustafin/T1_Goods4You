@@ -1,4 +1,4 @@
-import { FAQBlock } from '@/entities';
+import { FAQBlock } from '../../faq-item/model/types';
 
 export const faqData: FAQBlock[] = [
   {

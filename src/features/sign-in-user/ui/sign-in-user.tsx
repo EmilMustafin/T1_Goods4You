@@ -16,6 +16,7 @@ export const SignInUser = () => {
   const navigate = useNavigate();
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     auth({ username: login, password }).then((user) => {
       if (user.data) {
         setTokensIntoStorage(user.data);

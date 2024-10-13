@@ -1,7 +1,7 @@
 import { IToken } from './types';
 
 export const setTokensIntoStorage = (tokens: IToken): void => {
-  localStorage.setItem('accessToken', tokens.token);
+  localStorage.setItem('accessToken', tokens.accessToken);
   window.dispatchEvent(new Event('storage'));
 };
 

@@ -47,7 +47,7 @@ export const userSlice = createSlice({
 export const auth = createAppAsyncThunk<void, void>('auth/fetchAuth', async (_, thunkAPI) => {
   const {
     dispatch,
-    extra: { Router },
+    extra: { router },
   } = thunkAPI;
   dispatch(userSlice.actions.setLoading(true));
   const isAuth = !!getAccessToken();
@@ -62,7 +62,7 @@ export const auth = createAppAsyncThunk<void, void>('auth/fetchAuth', async (_, 
     }
   } else {
     await dispatch(fetchUserCarts(null));
-    await Router.navigate(ROUTER_PATHS.SIGN_IN);
+    await router.navigate(ROUTER_PATHS.SIGN_IN);
   }
   dispatch(userSlice.actions.setLoading(false));
 });
