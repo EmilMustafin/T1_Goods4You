@@ -1,97 +1,68 @@
-import { useState, useRef, forwardRef, FormEvent, FocusEvent, useEffect } from 'react';
+import { forwardRef, FormEvent, FocusEvent } from 'react';
 import styles from './input.module.css';
 import { InputProps } from '../model/types';
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
-      label,
-      isError = false,
       placeholder,
       onBlur,
       onChange,
       onFocus,
       onInput,
       value,
-      type,
+      type = 'text',
       className,
       maxLength,
-      white,
       required = false,
       id,
       defaultValue,
-      size = 'm',
       readOnly,
       disabled = false,
+      size='m', 
       ...rest
     },
     ref,
   ): JSX.Element => {
-    const initialValue = value || defaultValue;
-    const [focus, setFocus] = useState<boolean>(false);
-    const [valueInput, setValueInput] = useState<string | undefined>(initialValue);
-    const [typeInput] = useState<string | undefined>(type);
-    const inputRef = useRef<HTMLInputElement>(null);
-    const passwordBtnRef = useRef<HTMLButtonElement>(null);
+    const inputValue = value ?? '';
 
-    useEffect(() => {
-      if (inputRef.current && initialValue) {
-        inputRef.current.value = initialValue;
-      }
-    }, [initialValue]);
-
-    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>): void => {
-      if (e.key === 'Enter' && type === 'replace') {
-        e.preventDefault();
-      }
-    };
-
-    const handleChangeValue: (e: FormEvent<HTMLInputElement>) => void = (e) => {
-      setValueInput(e.currentTarget.value);
+    const handleChange = (e: FormEvent<HTMLInputElement>): void => {
       onChange?.(e);
     };
 
-    const handleOnInputValue: (e: FormEvent<HTMLInputElement>) => void = (e) => {
-      setValueInput(e.currentTarget.value);
+    const handleInput = (e: FormEvent<HTMLInputElement>): void => {
       onInput?.(e);
     };
 
-    const handleFocus: (e: FocusEvent<HTMLInputElement>) => void = (e) => {
-      setFocus(true);
+    const handleFocus = (e: FocusEvent<HTMLInputElement>): void => {
       onFocus?.(e);
     };
 
-    const handleFocusDisable: (e: FocusEvent<HTMLInputElement>) => void = (e) => {
-      e.preventDefault();
-
-      if (type !== 'password' || e.relatedTarget !== passwordBtnRef.current) {
-        setFocus(false);
-        onBlur?.(e);
-      }
+    const handleBlur = (e: FocusEvent<HTMLInputElement>): void => {
+      onBlur?.(e);
     };
 
-    const getInput = (): JSX.Element => (
+    
+    return (
       <input
         maxLength={maxLength}
-        type={typeInput}
-        onBlur={handleFocusDisable}
-        onChange={handleChangeValue}
+        type={type}
+        onBlur={handleBlur}
+        onChange={handleChange}
         onFocus={handleFocus}
-        onInput={handleOnInputValue}
-        onKeyDown={handleKeyPress}
-        className={`${styles.input} ${className}`}
+        onInput={handleInput}
+        className={`${styles.input} ${className} ${styles[size]}`} 
         ref={ref}
         placeholder={placeholder}
-        required={required}
+        value={inputValue}
         defaultValue={defaultValue}
+        required={required}
         id={id}
         readOnly={readOnly}
         disabled={disabled}
-        {...rest}
+        {...rest} 
       />
     );
-
-    return <>{getInput()}</>;
   },
 );
 

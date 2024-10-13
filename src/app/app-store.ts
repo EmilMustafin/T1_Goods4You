@@ -1,10 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { cartsUserSlice, userSlice } from '@/entities/user';
 import { authApi, cardsProductApi } from '@/shared/api';
-import { Router } from './app-router';
+import router from './app-router';
 
 export const extraArgument = {
-  Router,
+  router,
   userSlice,
   cartsUserSlice,
 };
