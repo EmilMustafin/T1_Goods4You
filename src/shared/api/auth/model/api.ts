@@ -20,7 +20,7 @@ export const loginApi = authApi.injectEndpoints({
         id: data.id,
         firstName: data.firstName,
         lastName: data.lastName,
-        token: data.token,
+        accessToken: data.accessToken,
       }),
     }),
   }),
